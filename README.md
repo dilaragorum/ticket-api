@@ -77,7 +77,6 @@ cd ticket-api
     quantity       integer not null
 ```
 
-![Database Architecture](.github/images/database.png)
 
 ```sh
 # build application
@@ -94,9 +93,3 @@ http://localhost:3000/swagger/index.html
 
 ![Swagger](.github/images/swagger.png)
 
-## My assumption for the business rules not mentioned in the case
-
-- Ticket Option name must be unique.
-- Ticket Option name and description cannot be empty.
-- To see user purchased history, I use `transaction_id` while keeping old records in the database under the
-`tickets_purchased` table.
