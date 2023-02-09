@@ -1,0 +1,41 @@
+linters-settings:
+  lll:
+      line-length: 170
+linters:
+  disable-all: true
+  enable:
+    - depguard
+    - unused
+    - errcheck
+    - dupl
+    - exhaustive
+    - funlen
+    - goconst
+    - gocritic
+    - gocyclo
+    - gofmt
+    - goimports
+    - revive
+    - gomnd
+    - gosimple
+    - govet
+    - ineffassign
+    - lll
+    - misspell
+    - nakedret
+    - nolintlint
+    - staticcheck
+    - stylecheck
+    - typecheck
+    - unconvert
+    - unparam
+    - unused
+    - whitespace
+issues:
+  # Excluding configuration per-path, per-linter, per-text and per-source
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - goconst
+        - funlen
+        - dupl

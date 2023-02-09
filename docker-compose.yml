@@ -1,0 +1,8 @@
+services:
+  api:
+    container_name: ticket_api
+    ports:
+      - "3000:3000"
+    build:
+      dockerfile: Dockerfile
+      context: .

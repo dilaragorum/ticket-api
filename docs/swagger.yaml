@@ -1,0 +1,132 @@
+definitions:
+  handler.CreatePurchaseTicketOptionRequestBody:
+    properties:
+      quantity:
+        type: integer
+      user_id:
+        type: string
+    type: object
+  handler.CreateTicketOptionRequestBody:
+    properties:
+      allocation:
+        type: integer
+      desc:
+        type: string
+      name:
+        type: string
+    type: object
+  ticket.Ticket:
+    properties:
+      allocation:
+        type: integer
+      desc:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+host: localhost:3000
+info:
+  contact:
+    email: dilaragorum@gmail.com
+    name: Dilara Görüm
+  description: TicketService
+  title: Ticket API
+  version: "1.0"
+paths:
+  /ticket/{id}:
+    get:
+      description: Get specified ticket with ID from available tickets
+      parameters:
+      - description: Ticket ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ticket.Ticket'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get ticket by ticket id
+      tags:
+      - ticket
+  /ticket_options:
+    post:
+      consumes:
+      - application/json
+      description: Create a ticket_option with an allocation of tickets available
+        to purchase
+      parameters:
+      - description: Create Ticket Option Request Body
+        in: body
+        name: requestBody
+        required: true
+        schema:
+          $ref: '#/definitions/handler.CreateTicketOptionRequestBody'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/ticket.Ticket'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Create Ticket Option
+      tags:
+      - ticket
+  /ticket_options/{id}/purchases:
+    post:
+      consumes:
+      - application/json
+      description: Purchase a quantity of tickets from the allocation of the given
+        ticket_option
+      parameters:
+      - description: Purchase Ticket Option Request Body
+        in: body
+        name: requestBody
+        required: true
+        schema:
+          $ref: '#/definitions/handler.CreatePurchaseTicketOptionRequestBody'
+      - description: Ticket ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Purchase from Ticket Option
+      tags:
+      - ticket
+swagger: "2.0"
