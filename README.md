@@ -10,10 +10,6 @@ Main dependencies:
 - Mock: [golang/mock](https://github.com/golang/mock)
 - Test Assertions: [stretchr/testify](https://github.com/stretchr/testify)
 
-## Requirements
-- [x] You need to dockerize your app
-- [x] You need to write Unit Tests to your app
-- [x] Also open api documentation required
 
 ## Project Layout
 
@@ -62,19 +58,6 @@ cd ticket-api
 ```
 # You must have a postgresql up and running.
 
-# You have to create two tables.
-
-1- tickets
-    id          serial  primary key,
-    name        varchar not null,
-    description varchar not null,
-    allocation  integer
-
-2- tickets_purchased
-    transaction_id serial primary key,
-    user_id        varchar,
-    ticket_id      integer --> Must be foreign key,
-    quantity       integer not null
 ```
 
 
